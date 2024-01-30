@@ -5,8 +5,7 @@
 source activate rclone
 
 # Backup
-
-
+rclone sync digitalocean:datasus-ftp-mirror digitalocean:datasus-ftp-backup
 
 # Delete log file
 rm rclone_datasus_log.txt
