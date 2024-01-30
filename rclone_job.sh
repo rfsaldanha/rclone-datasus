@@ -18,5 +18,9 @@ echo -e "\n" >> rclone_datasus_log.txt
 # Mirror datasus FTP
 rclone sync :ftp:dissemin/publicos digitalocean:datasus-ftp-mirror --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
 
+# Write end time
+echo -e "\n" >> rclone_datasus_log.txt
+date >> rclone_datasus_log.txt
+
 # Deactivate conda env
 conda deactivate
