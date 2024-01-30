@@ -4,7 +4,7 @@
 # https://saturncloud.io/blog/calling-conda-source-activate-from-bash-script-a-guide/
 source activate rclone
 
-# Backup
+# Current mirror to backup
 rclone sync digitalocean:datasus-ftp-mirror digitalocean:datasus-ftp-backup
 
 # Delete log file
