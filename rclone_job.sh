@@ -7,13 +7,6 @@ source activate rclone
 # Current mirror content to backup
 rclone sync digitalocean:datasus-ftp-mirror digitalocean:datasus-ftp-backup
 
-# Current mirror tree to backup
-rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_tree.txt
-
-# Copy mirror log and tree files to backup
-rclone copy rclone_datasus_log.txt digitalocean:datasus-ftp-backup
-rclone copy rclone_datasus_tree.txt digitalocean:datasus-ftp-backup
-
 # Delete log and tree files
 rm rclone_datasus_log.txt
 rm rclone_datasus_tree.txt
