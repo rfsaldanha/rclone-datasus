@@ -7,7 +7,7 @@ source activate rclone
 ## Backup: Sync backup with mirror
 
 # Current mirror content to backup
-rclone sync digitalocean:datasus-ftp-mirror digitalocean:datasus-ftp-backup
+# rclone sync digitalocean:datasus-ftp-mirror digitalocean:datasus-ftp-backup
 
 ## Update: Sync mirror with DataSUS
 
