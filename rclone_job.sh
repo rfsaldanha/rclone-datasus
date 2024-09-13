@@ -21,22 +21,22 @@ date > rclone_datasus_log.txt
 echo -e "\n" >> rclone_datasus_log.txt
 
 # Mirror datasus FTP
-rclone sync :ftp:dissemin/publicos/SIM digitalocean:datasus-ftp-mirror/SIM --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
-rclone sync :ftp:dissemin/publicos/SINASC digitalocean:datasus-ftp-mirror/SINASC --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/SIM digitalocean:datasus-ftp-mirror-test/SIM --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/SINASC digitalocean:datasus-ftp-mirror-test/SINASC --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
 
 
 # Create tree file of mirror
-rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_files_tree.txt
-rclone tree digitalocean:datasus-ftp-mirror --dirs-only > rclone_datasus_dirs_tree.txt
+rclone tree digitalocean:datasus-ftp-mirror-test > rclone_datasus_files_tree.txt
+rclone tree digitalocean:datasus-ftp-mirror-test --dirs-only > rclone_datasus_dirs_tree.txt
 
 # Write end time
 echo -e "\n" >> rclone_datasus_log.txt
 date >> rclone_datasus_log.txt
 
 # Copy log and tree files to mirror
-rclone copy rclone_datasus_log.txt digitalocean:datasus-ftp-mirror
-rclone copy rclone_datasus_files_tree.txt digitalocean:datasus-ftp-mirror
-rclone copy rclone_datasus_dirs_tree.txt digitalocean:datasus-ftp-mirror
+rclone copy rclone_datasus_log.txt digitalocean:datasus-ftp-mirror-test
+rclone copy rclone_datasus_files_tree.txt digitalocean:datasus-ftp-mirror-test
+rclone copy rclone_datasus_dirs_tree.txt digitalocean:datasus-ftp-mirror-test
 
 # Deactivate conda env
 conda deactivate
