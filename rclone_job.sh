@@ -21,7 +21,9 @@ date > rclone_datasus_log.txt
 echo -e "\n" >> rclone_datasus_log.txt
 
 # Mirror datasus FTP
-rclone sync :ftp:dissemin/publicos digitalocean:datasus-ftp-mirror --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/SIM digitalocean:datasus-ftp-mirror/SIM --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/SINASC digitalocean:datasus-ftp-mirror/SINASC --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt
+
 
 # Create tree file of mirror
 rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_files_tree.txt
