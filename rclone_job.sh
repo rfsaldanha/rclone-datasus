@@ -2,7 +2,7 @@
 
 # Activate conda env
 # https://saturncloud.io/blog/calling-conda-source-activate-from-bash-script-a-guide/
-source activate rclone
+# source activate rclone
 
 ## Backup: Sync backup with mirror
 
@@ -29,17 +29,17 @@ rclone sync :ftp:dissemin/publicos/SIM datasus-ftp-mirror:SIM --ftp-host=ftp.dat
 #rclone sync :ftp:dissemin/publicos/CNES digitalocean:datasus-ftp-mirror/CNES --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
 
 # Create tree file of mirror
-rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_files_tree.txt
-rclone tree digitalocean:datasus-ftp-mirror --dirs-only > rclone_datasus_dirs_tree.txt
+rclone tree datasus-ftp-mirror: > rclone_datasus_files_tree.txt
+rclone tree datasus-ftp-mirror: --dirs-only > rclone_datasus_dirs_tree.txt
 
 # Write end time
 echo -e "\n" >> rclone_datasus_log.txt
 date >> rclone_datasus_log.txt
 
 # Copy log and tree files to mirror
-rclone copy rclone_datasus_log.txt digitalocean:datasus-ftp-mirror
-rclone copy rclone_datasus_files_tree.txt digitalocean:datasus-ftp-mirror
-rclone copy rclone_datasus_dirs_tree.txt digitalocean:datasus-ftp-mirror
+rclone copy rclone_datasus_log.txt datasus-ftp-mirror:
+rclone copy rclone_datasus_files_tree.txt datasus-ftp-mirror:
+rclone copy rclone_datasus_dirs_tree.txt datasus-ftp-mirror:
 
 # Deactivate conda env
-conda deactivate
+# conda deactivate
