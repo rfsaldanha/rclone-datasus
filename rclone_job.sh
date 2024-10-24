@@ -27,16 +27,16 @@ rclone sync :ftp:dissemin/publicos/SINASC datasus-ftp-mirror:s3datasus/SINASC --
 
 # SIH
 echo -e "SIH files\n" >> rclone_datasus_log.txt
-rclone sync :ftp:dissemin/publicos/SIHSUS datasus-ftp-mirror:s3datasus/SIHSUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
+rclone sync :ftp:dissemin/publicos/SIHSUS datasus-ftp-mirror:s3datasus/SIHSUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # SIA
-#rclone sync :ftp:dissemin/publicos/SIASUS digitalocean:datasus-ftp-mirror/SIASUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
+#rclone sync :ftp:dissemin/publicos/SIASUS datasus-ftp-mirror:s3datasus/SIASUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # SINAN
-#rclone sync :ftp:dissemin/publicos/SINAN digitalocean:datasus-ftp-mirror/SINAN --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
+#rclone sync :ftp:dissemin/publicos/SINAN datasus-ftp-mirror:s3datasus/SINAN --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # CNES
-#rclone sync :ftp:dissemin/publicos/CNES digitalocean:datasus-ftp-mirror/CNES --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
+#rclone sync :ftp:dissemin/publicos/CNES datasus-ftp-mirror:s3datasus/CNES --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # Create tree file of mirror
 rclone tree datasus-ftp-mirror:s3datasus > rclone_datasus_files_tree.txt
