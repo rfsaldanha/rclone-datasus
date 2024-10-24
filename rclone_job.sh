@@ -7,10 +7,10 @@
 
 ## Update: Sync mirror with DataSUS
 
-# Delete log and tree files
-rm rclone_datasus_log.txt
-rm rclone_datasus_files_tree.txt
-rm rclone_datasus_dirs_tree.txt
+# Rename old log and tree files
+mv -f rclone_datasus_log.txt rclone_datasus_log_last_run.txt
+mv -f rclone_datasus_files_tree.txt rclone_datasus_files_tree_last_run.txt
+mv -f rclone_datasus_dirs_tree.txt rclone_datasus_dirs_tree_last_run.txt
 
 # Create log file, write system time
 date > rclone_datasus_log.txt
