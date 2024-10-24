@@ -54,3 +54,7 @@ date >> rclone_datasus_log.txt
 rclone copy rclone_datasus_log.txt datasus-ftp-mirror:s3datasus
 rclone copy rclone_datasus_files_tree.txt datasus-ftp-mirror:s3datasus
 rclone copy rclone_datasus_dirs_tree.txt datasus-ftp-mirror:s3datasus
+
+# End timestamp
+echo -e "End of update\n" >> rclone_datasus_log.txt
+date > rclone_datasus_log.txt
