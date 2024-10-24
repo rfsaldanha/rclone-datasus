@@ -13,6 +13,7 @@ mv -f rclone_datasus_files_tree.txt rclone_datasus_files_tree_last_run.txt
 mv -f rclone_datasus_dirs_tree.txt rclone_datasus_dirs_tree_last_run.txt
 
 # Create log file, write system time
+touch rclone_datasus_log.txt
 date > rclone_datasus_log.txt
 echo -e "\n" >> rclone_datasus_log.txt
 
