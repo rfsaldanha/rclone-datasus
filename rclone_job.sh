@@ -26,7 +26,8 @@ echo -e "SINASC files\n" >> rclone_datasus_log.txt
 rclone sync :ftp:dissemin/publicos/SINASC datasus-ftp-mirror:s3datasus/SINASC --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # SIH
-#rclone sync :ftp:dissemin/publicos/SIHSUS digitalocean:datasus-ftp-mirror/SIHSUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
+echo -e "SIH files\n" >> rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/SIHSUS datasus-ftp-mirror:s3datasus/SIHSUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
 
 # SIA
 #rclone sync :ftp:dissemin/publicos/SIASUS digitalocean:datasus-ftp-mirror/SIASUS --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude "*.xml"
