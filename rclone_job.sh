@@ -11,6 +11,7 @@
 mv -f rclone_datasus_log.txt rclone_datasus_log_last_run.txt
 mv -f rclone_datasus_files_tree.txt rclone_datasus_files_tree_last_run.txt
 mv -f rclone_datasus_dirs_tree.txt rclone_datasus_dirs_tree_last_run.txt
+mv -f rclone_datasus_full_path.txt rclone_datasus_full_path_last_run.txt
 
 # Create log file, write system time
 touch rclone_datasus_log.txt
@@ -45,6 +46,7 @@ rclone sync :ftp:dissemin/publicos/CNES digitalocean:datasus-ftp-mirror/CNES --f
 # Create tree file of mirror
 rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_files_tree.txt
 rclone tree digitalocean:datasus-ftp-mirror --dirs-only > rclone_datasus_dirs_tree.txt
+rclone tree digitalocean:datasus-ftp-mirror --full-path --noindent > rclone_datasus_full_path.txt
 
 # Write end time
 echo -e "\n" >> rclone_datasus_log.txt
@@ -54,6 +56,7 @@ date >> rclone_datasus_log.txt
 rclone copy rclone_datasus_log.txt digitalocean:datasus-ftp-mirror
 rclone copy rclone_datasus_files_tree.txt digitalocean:datasus-ftp-mirror
 rclone copy rclone_datasus_dirs_tree.txt digitalocean:datasus-ftp-mirror
+rclone copy rclone_datasus_full_path.txt digitalocean:datasus-ftp-mirror
 
 # End timestamp
 echo -e "End of update\n" >> rclone_datasus_log.txt
