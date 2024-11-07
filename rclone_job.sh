@@ -44,9 +44,9 @@ echo -e "CNES files\n" >> rclone_datasus_log.txt
 rclone sync :ftp:dissemin/publicos/CNES digitalocean:datasus-ftp-mirror/CNES --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
 # Create tree file of mirror
-rclone tree digitalocean:datasus-ftp-mirror > rclone_datasus_files_tree.txt
-rclone tree digitalocean:datasus-ftp-mirror --dirs-only > rclone_datasus_dirs_tree.txt
-rclone tree digitalocean:datasus-ftp-mirror --full-path --noindent > rclone_datasus_full_path.txt
+rclone tree digitalocean:datasus-ftp-mirror --exclude rclone-logs/ > rclone_datasus_files_tree.txt
+rclone tree digitalocean:datasus-ftp-mirror --exclude rclone-logs/ --dirs-only > rclone_datasus_dirs_tree.txt
+rclone tree digitalocean:datasus-ftp-mirror --exclude rclone-logs/ --full-path --noindent > rclone_datasus_full_path.txt
 
 # Write end time
 echo -e "\n" >> rclone_datasus_log.txt
@@ -58,6 +58,9 @@ rclone copy rclone_datasus_files_tree.txt digitalocean:datasus-ftp-mirror
 rclone copy rclone_datasus_dirs_tree.txt digitalocean:datasus-ftp-mirror
 rclone copy rclone_datasus_full_path.txt digitalocean:datasus-ftp-mirror
 
-# End timestamp
-echo -e "End of update\n" >> rclone_datasus_log.txt
-date > rclone_datasus_log.txt
+# Copy log with date time stamp
+FILE_LOG="rclone_datasus_log_$(date +"%F_%T").txt"
+cp rclone_datasus_log.txt rclone-logs/${FILE_LOG}
+rclone copy rclone-logs/${FILE_LOG} digitalocean:datasus-ftp-mirror/rclone-logs
+rclone tree digitalocean:datasus-ftp-mirror/rclone-logs --full-path --noindent > rclone_datasus_logs.txt
+rclone copy rclone_datasus_logs.txt digitalocean:datasus-ftp-mirror
