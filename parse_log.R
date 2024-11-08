@@ -43,7 +43,7 @@ res <- tibble::tibble(
   na.omit()
 
 if(nrow(res) > 0){
-  con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "logs.duckdb")
+  con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "rclone_logs.duckdb")
   DBI::dbWriteTable(con, name = "logs", value = res, append = TRUE)
   DBI::dbDisconnect(con)
 }
