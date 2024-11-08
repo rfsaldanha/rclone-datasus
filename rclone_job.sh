@@ -64,3 +64,6 @@ cp rclone_datasus_log.txt rclone-logs/${FILE_LOG}
 rclone copy rclone-logs/${FILE_LOG} digitalocean:datasus-ftp-mirror/rclone-logs
 rclone tree digitalocean:datasus-ftp-mirror/rclone-logs --full-path --noindent > rclone_datasus_logs.txt
 rclone copy rclone_datasus_logs.txt digitalocean:datasus-ftp-mirror
+
+# Parse log to database
+Rscript rclone-datasus/parse_log.R
