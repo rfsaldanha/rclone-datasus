@@ -43,6 +43,14 @@ rclone sync :ftp:dissemin/publicos/SINAN digitalocean:datasus-ftp-mirror/SINAN -
 echo -e "CNES files\n" >> rclone_datasus_log.txt
 rclone sync :ftp:dissemin/publicos/CNES digitalocean:datasus-ftp-mirror/CNES --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
 
+# ESUSNOTIFICA
+echo -e "ESUSNOTIFICA files\n" >> rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/ESUSNOTIFICA digitalocean:datasus-ftp-mirror/ESUSNOTIFICA --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
+
+# DADOSABERTOS
+echo -e "DADOSABERTOS files\n" >> rclone_datasus_log.txt
+rclone sync :ftp:dissemin/publicos/Dados_Abertos digitalocean:datasus-ftp-mirror/Dados_Abertos --ftp-host=ftp.datasus.gov.br --ftp-user=anonymous --ftp-pass=$(rclone obscure dummy) --ftp-concurrency=5 --verbose --log-file=rclone_datasus_log.txt --exclude=*.{xml,csv}
+
 # Create tree file of mirror
 rclone tree digitalocean:datasus-ftp-mirror --exclude rclone-logs/ > rclone_datasus_files_tree.txt
 rclone tree digitalocean:datasus-ftp-mirror --exclude rclone-logs/ --dirs-only > rclone_datasus_dirs_tree.txt
