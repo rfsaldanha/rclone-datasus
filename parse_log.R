@@ -24,7 +24,7 @@ res <- tibble::tibble(
       stringr::str_detect(log_info, "-e SINAN files") ~ "SINAN",
       stringr::str_detect(log_info, "-e CNES files") ~ "CNES",
       stringr::str_detect(log_info, "-e ESUSNOTIFICA files") ~ "ESUSNOTIFICA",
-      stringr::str_detect(log_info, "-e DADOSABERTOS files") ~ "DADOSABERTOS"
+      stringr::str_detect(log_info, "-e DADOSABERTOS files") ~ "DADOSABERTOS",
       .default = NA
     )
   ) |>
